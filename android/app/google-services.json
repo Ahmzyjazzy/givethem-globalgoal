@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "993011665463",
+    "firebase_url": "https://givethem-62ad6.firebaseio.com",
+    "project_id": "givethem-62ad6",
+    "storage_bucket": "givethem-62ad6.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:993011665463:android:345f572d9e0609bd78cdb2",
+        "android_client_info": {
+          "package_name": "com.kampusbox.givethem"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "993011665463-sf2o80p170m40t88eh7kjjclptr79ri9.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.kampusbox.givethem",
+            "certificate_hash": "4bee22ee298837d555739e0ee5bcd03253cc0f92"
+          }
+        },
+        {
+          "client_id": "993011665463-kjk6qc2c61mfig87jm8t37c95mvsvgf7.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBqlHnjujcbyNruQYQFwMBoWhnQBRUNaN8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "993011665463-kjk6qc2c61mfig87jm8t37c95mvsvgf7.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
