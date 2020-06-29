@@ -7,6 +7,7 @@ import 'package:givethem/presentation/sign_in/sign_in_page.dart';
 import 'package:givethem/presentation/sign_up/sign_up_page.dart';
 import 'package:givethem/presentation/splash/splash_page.dart';
 import 'package:givethem/presentation/welcome/welcome_page.dart';
+import 'package:givethem/presentation/goals_detail/goal_detail_page.dart';
 
 @MaterialAutoRouter(generateNavigationHelperExtension: true)
 class $Router {
@@ -16,6 +17,7 @@ class $Router {
   SignInPage signInPage;
   SignUpPage signUpPage;
   GoalsPage goalsPage;
+  GoalDetailWebview goalDetailWebview;
   DonatePage donatePage;
   AuditPage auditPage;
   SettingsPage settingsPage;

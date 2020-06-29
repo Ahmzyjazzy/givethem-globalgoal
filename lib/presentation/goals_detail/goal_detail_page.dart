@@ -9,23 +9,26 @@ final Set<JavascriptChannel> jsChannels = [
       }),
 ].toSet();
 
-class DonatePage extends StatefulWidget {
-  static String title = 'Donate';
+class GoalDetailWebview extends StatefulWidget {
+  static String title = 'Global Goals';
+  final String url;
+
+  GoalDetailWebview(this.url);
 
   @override
-  _DonatePageState createState() => _DonatePageState();
+  _GoalDetailWebviewState createState() => _GoalDetailWebviewState();
 }
 
-class _DonatePageState extends State<DonatePage> {
+class _GoalDetailWebviewState extends State<GoalDetailWebview> {
   final flutterWebViewPlugin = FlutterWebviewPlugin();
 
   @override
   Widget build(BuildContext context) {
     return WebviewScaffold(
       appBar: AppBar(
-        title: Text(DonatePage.title),
+        title: Text(GoalDetailWebview.title),
       ),
-      url: 'https://givethem.netlify.app/donate',
+      url: widget.url,
       javascriptChannels: jsChannels,
       withZoom: true,
       withLocalStorage: true,

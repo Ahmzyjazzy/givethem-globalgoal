@@ -1,10 +1,7 @@
-import 'package:auto_route/auto_route.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:givethem/constants.dart';
-import 'package:givethem/presentation/routes/router.gr.dart';
-import 'package:url_launcher/url_launcher.dart';
-import 'dart:async';
+import 'package:givethem/presentation/goals_detail/goal_detail_page.dart';
 
 class GoalList extends StatelessWidget {
   final List<String> goals = List<String>.generate(17, (index) => 'assets/icons/goals/TheGlobalGoals_Icons_Color_Goal_${index + 1}.png');
@@ -31,16 +28,14 @@ class GoalList extends StatelessWidget {
             itemBuilder: (context, index) => GestureDetector(
               onTap: () async {
                 String url = 'https://www.globalgoals.org/';
-                if (await canLaunch(url)) {
-                  await launch(
-                    url,
-                    forceSafariVC: true,
-                    forceWebView: true,
-                    enableJavaScript: true,
-                  );
-                } else {
-                  throw 'Could not launch $url';
-                }
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) {
+                      return GoalDetailWebview(url);
+                    },
+                  ),
+                );
               },
               child: Container(
                 width: 200,

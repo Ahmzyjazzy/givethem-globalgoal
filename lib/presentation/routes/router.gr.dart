@@ -12,6 +12,7 @@ import 'package:givethem/presentation/welcome/welcome_page.dart';
 import 'package:givethem/presentation/sign_in/sign_in_page.dart';
 import 'package:givethem/presentation/sign_up/sign_up_page.dart';
 import 'package:givethem/presentation/goals/goals_page.dart';
+import 'package:givethem/presentation/goals_detail/goal_detail_page.dart';
 import 'package:givethem/presentation/donate/donate_page.dart';
 import 'package:givethem/presentation/audit/audit_page.dart';
 import 'package:givethem/presentation/settings/settings_page.dart';
@@ -22,6 +23,7 @@ abstract class Routes {
   static const signInPage = '/sign-in-page';
   static const signUpPage = '/sign-up-page';
   static const goalsPage = '/goals-page';
+  static const goalDetailWebview = '/goal-detail-webview';
   static const donatePage = '/donate-page';
   static const auditPage = '/audit-page';
   static const settingsPage = '/settings-page';
@@ -31,6 +33,7 @@ abstract class Routes {
     signInPage,
     signUpPage,
     goalsPage,
+    goalDetailWebview,
     donatePage,
     auditPage,
     settingsPage,
@@ -47,6 +50,7 @@ class Router extends RouterBase {
 
   @override
   Route<dynamic> onGenerateRoute(RouteSettings settings) {
+    final args = settings.arguments;
     switch (settings.name) {
       case Routes.splashPage:
         return MaterialPageRoute<dynamic>(
@@ -73,6 +77,16 @@ class Router extends RouterBase {
           builder: (context) => GoalsPage(),
           settings: settings,
         );
+      case Routes.goalDetailWebview:
+        if (hasInvalidArgs<GoalDetailWebviewArguments>(args,
+            isRequired: true)) {
+          return misTypedArgsRoute<GoalDetailWebviewArguments>(args);
+        }
+        final typedArgs = args as GoalDetailWebviewArguments;
+        return MaterialPageRoute<dynamic>(
+          builder: (context) => GoalDetailWebview(typedArgs.url),
+          settings: settings,
+        );
       case Routes.donatePage:
         return MaterialPageRoute<dynamic>(
           builder: (context) => DonatePage(),
@@ -95,6 +109,16 @@ class Router extends RouterBase {
 }
 
 // *************************************************************************
+// Arguments holder classes
+// **************************************************************************
+
+//GoalDetailWebview arguments holder class
+class GoalDetailWebviewArguments {
+  final String url;
+  GoalDetailWebviewArguments({@required this.url});
+}
+
+// *************************************************************************
 // Navigation helper methods extension
 // **************************************************************************
 
@@ -108,6 +132,14 @@ extension RouterNavigationHelperMethods on ExtendedNavigatorState {
   Future pushSignUpPage() => pushNamed(Routes.signUpPage);
 
   Future pushGoalsPage() => pushNamed(Routes.goalsPage);
+
+  Future pushGoalDetailWebview({
+    @required String url,
+  }) =>
+      pushNamed(
+        Routes.goalDetailWebview,
+        arguments: GoalDetailWebviewArguments(url: url),
+      );
 
   Future pushDonatePage() => pushNamed(Routes.donatePage);
 
