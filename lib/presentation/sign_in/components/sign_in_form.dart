@@ -1,4 +1,6 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
+import 'package:givethem/presentation/routes/router.gr.dart';
 import 'package:givethem/presentation/sign_up/sign_up_page.dart';
 import 'package:givethem/presentation/sign_up/components/background.dart';
 import 'package:givethem/presentation/sign_up/components/or_divider.dart';
@@ -7,35 +9,42 @@ import 'package:givethem/presentation/core/already_have_an_account_acheck.dart';
 import 'package:givethem/presentation/core/rounded_button.dart';
 import 'package:givethem/presentation/core/rounded_input_field.dart';
 import 'package:givethem/presentation/core/rounded_password_field.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:flushbar/flushbar_helper.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:givethem/application/auth/sign_in_form/sign_in_form_bloc.dart';
+import 'package:givethem/presentation/core/dialog.dart';
 
 
-class Body extends StatelessWidget {
+class SignInForm extends StatelessWidget {
+  final GlobalKey<State> _keyLoader = new GlobalKey<State>();
+
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
     return BlocConsumer<SignInFormBloc, SignInFormState>(
       listener: (context, state) {
+        state.isSubmitting ? Dialogs.showLoadingDialog(context, _keyLoader) :
+          Navigator.of(_keyLoader.currentContext, rootNavigator: true)
+            .pop();
+
         state.authFailureOrSuccessOption.fold(
               () {},
               (either) => either.fold(
                 (failure) {
-              FlushbarHelper.createError(
-                message: failure.map(
-                  cancelledByUser: (_) => 'Cancelled',
-                  serverError: (_) => 'Server error',
-                  emailAlreadyInUse: (_) => 'Email already in use',
-                  invalidEmailAndPasswordCombination: (_) =>
-                  'Invalid email and password combination',
-                ),
-              ).show(context);
-            },
+                  FlushbarHelper.createError(
+                    message: failure.map(
+                      cancelledByUser: (_) => 'Cancelled',
+                      serverError: (_) => 'Server error',
+                      emailAlreadyInUse: (_) => 'Email already in use',
+                      invalidEmailAndPasswordCombination: (_) =>
+                      'Invalid email and password combination',
+                    ),
+                  ).show(context);
+                },
                 (_) {
-              // TODO: Navigate
-            },
+                ExtendedNavigator.of(context)
+                    .pushReplacementNamed(Routes.goalsPage);
+                },
           ),
         );
       },
@@ -47,14 +56,9 @@ class Body extends StatelessWidget {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
-                  Text(
-                    "LOGIN",
-                    style: TextStyle(fontWeight: FontWeight.bold),
-                  ),
-                  SizedBox(height: size.height * 0.03),
-                  SvgPicture.asset(
-                    "assets/icons/login.svg",
-                    height: size.height * 0.35,
+                  Image.asset(
+                    "assets/icons/logo.png",
+                    height: size.height * 0.2,
                   ),
                   RoundedInputField(
                     hintText: "Your Email",
@@ -68,11 +72,11 @@ class Body extends StatelessWidget {
                         .value
                         .fold(
                           (f) => f.maybeMap(
-                        invalidEmail: (_) => 'Invalid Email',
-                        orElse: () => null,
-                      ),
+                            invalidEmail: (_) => 'Invalid Email',
+                            orElse: () => null,
+                          ),
                           (_) => null,
-                    ),
+                        ),
                   ),
                   RoundedPasswordField(
                     onChanged: (value) => context
@@ -93,19 +97,23 @@ class Body extends StatelessWidget {
                     ),
                   ),
                   RoundedButton(
-                    text: "SIGNUP",
+                    text: "LOGIN",
                     press: () {
+                      FocusScopeNode currentFocus = FocusScope.of(context);
+                      if (!currentFocus.hasPrimaryFocus && currentFocus.focusedChild != null) {
+                        FocusManager.instance.primaryFocus.unfocus();
+                      }
                       context.bloc<SignInFormBloc>().add(
                         const SignInFormEvent
-                            .registerWithEmailAndPasswordPressed(),
+                            .signInWithEmailAndPasswordPressed(),
                       );
                     },
                   ),
                   SizedBox(height: size.height * 0.03),
                   AlreadyHaveAnAccountCheck(
-                    login: false,
+                    login: true,
                     press: () {
-                      Navigator.push(
+                      Navigator.pushReplacement(
                         context,
                         MaterialPageRoute(
                           builder: (context) {

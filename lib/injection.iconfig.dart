@@ -16,11 +16,11 @@ import 'package:get_it/get_it.dart';
 void $initGetIt(GetIt g, {String environment}) {
   final firebaseInjectableModule = _$FirebaseInjectableModule();
   g.registerLazySingleton<FirebaseAuth>(
-          () => firebaseInjectableModule.firebaseAuth);
+      () => firebaseInjectableModule.firebaseAuth);
   g.registerLazySingleton<GoogleSignIn>(
-          () => firebaseInjectableModule.googleSignIn);
+      () => firebaseInjectableModule.googleSignIn);
   g.registerLazySingleton<IAuthFacade>(
-          () => FirebaseAuthFacade(g<FirebaseAuth>(), g<GoogleSignIn>()));
+      () => FirebaseAuthFacade(g<FirebaseAuth>(), g<GoogleSignIn>()));
   g.registerFactory<SignInFormBloc>(() => SignInFormBloc(g<IAuthFacade>()));
   g.registerFactory<AuthBloc>(() => AuthBloc(g<IAuthFacade>()));
 }

@@ -19,6 +19,10 @@ class _$AuthEventTearOff {
   SignedOut signedOut() {
     return const SignedOut();
   }
+
+  GetAuthUser getAuthUser() {
+    return const GetAuthUser();
+  }
 }
 
 // ignore: unused_element
@@ -29,22 +33,26 @@ mixin _$AuthEvent {
   Result when<Result extends Object>({
     @required Result authCheckRequested(),
     @required Result signedOut(),
+    @required Result getAuthUser(),
   });
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
     Result authCheckRequested(),
     Result signedOut(),
+    Result getAuthUser(),
     @required Result orElse(),
   });
   @optionalTypeArgs
   Result map<Result extends Object>({
     @required Result authCheckRequested(AuthCheckRequested value),
     @required Result signedOut(SignedOut value),
+    @required Result getAuthUser(GetAuthUser value),
   });
   @optionalTypeArgs
   Result maybeMap<Result extends Object>({
     Result authCheckRequested(AuthCheckRequested value),
     Result signedOut(SignedOut value),
+    Result getAuthUser(GetAuthUser value),
     @required Result orElse(),
   });
 }
@@ -100,9 +108,11 @@ class _$AuthCheckRequested implements AuthCheckRequested {
   Result when<Result extends Object>({
     @required Result authCheckRequested(),
     @required Result signedOut(),
+    @required Result getAuthUser(),
   }) {
     assert(authCheckRequested != null);
     assert(signedOut != null);
+    assert(getAuthUser != null);
     return authCheckRequested();
   }
 
@@ -111,6 +121,7 @@ class _$AuthCheckRequested implements AuthCheckRequested {
   Result maybeWhen<Result extends Object>({
     Result authCheckRequested(),
     Result signedOut(),
+    Result getAuthUser(),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -125,9 +136,11 @@ class _$AuthCheckRequested implements AuthCheckRequested {
   Result map<Result extends Object>({
     @required Result authCheckRequested(AuthCheckRequested value),
     @required Result signedOut(SignedOut value),
+    @required Result getAuthUser(GetAuthUser value),
   }) {
     assert(authCheckRequested != null);
     assert(signedOut != null);
+    assert(getAuthUser != null);
     return authCheckRequested(this);
   }
 
@@ -136,6 +149,7 @@ class _$AuthCheckRequested implements AuthCheckRequested {
   Result maybeMap<Result extends Object>({
     Result authCheckRequested(AuthCheckRequested value),
     Result signedOut(SignedOut value),
+    Result getAuthUser(GetAuthUser value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -185,9 +199,11 @@ class _$SignedOut implements SignedOut {
   Result when<Result extends Object>({
     @required Result authCheckRequested(),
     @required Result signedOut(),
+    @required Result getAuthUser(),
   }) {
     assert(authCheckRequested != null);
     assert(signedOut != null);
+    assert(getAuthUser != null);
     return signedOut();
   }
 
@@ -196,6 +212,7 @@ class _$SignedOut implements SignedOut {
   Result maybeWhen<Result extends Object>({
     Result authCheckRequested(),
     Result signedOut(),
+    Result getAuthUser(),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -210,9 +227,11 @@ class _$SignedOut implements SignedOut {
   Result map<Result extends Object>({
     @required Result authCheckRequested(AuthCheckRequested value),
     @required Result signedOut(SignedOut value),
+    @required Result getAuthUser(GetAuthUser value),
   }) {
     assert(authCheckRequested != null);
     assert(signedOut != null);
+    assert(getAuthUser != null);
     return signedOut(this);
   }
 
@@ -221,6 +240,7 @@ class _$SignedOut implements SignedOut {
   Result maybeMap<Result extends Object>({
     Result authCheckRequested(AuthCheckRequested value),
     Result signedOut(SignedOut value),
+    Result getAuthUser(GetAuthUser value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -233,6 +253,99 @@ class _$SignedOut implements SignedOut {
 
 abstract class SignedOut implements AuthEvent {
   const factory SignedOut() = _$SignedOut;
+}
+
+abstract class $GetAuthUserCopyWith<$Res> {
+  factory $GetAuthUserCopyWith(
+          GetAuthUser value, $Res Function(GetAuthUser) then) =
+      _$GetAuthUserCopyWithImpl<$Res>;
+}
+
+class _$GetAuthUserCopyWithImpl<$Res> extends _$AuthEventCopyWithImpl<$Res>
+    implements $GetAuthUserCopyWith<$Res> {
+  _$GetAuthUserCopyWithImpl(
+      GetAuthUser _value, $Res Function(GetAuthUser) _then)
+      : super(_value, (v) => _then(v as GetAuthUser));
+
+  @override
+  GetAuthUser get _value => super._value as GetAuthUser;
+}
+
+class _$GetAuthUser implements GetAuthUser {
+  const _$GetAuthUser();
+
+  @override
+  String toString() {
+    return 'AuthEvent.getAuthUser()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) || (other is GetAuthUser);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  Result when<Result extends Object>({
+    @required Result authCheckRequested(),
+    @required Result signedOut(),
+    @required Result getAuthUser(),
+  }) {
+    assert(authCheckRequested != null);
+    assert(signedOut != null);
+    assert(getAuthUser != null);
+    return getAuthUser();
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeWhen<Result extends Object>({
+    Result authCheckRequested(),
+    Result signedOut(),
+    Result getAuthUser(),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (getAuthUser != null) {
+      return getAuthUser();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  Result map<Result extends Object>({
+    @required Result authCheckRequested(AuthCheckRequested value),
+    @required Result signedOut(SignedOut value),
+    @required Result getAuthUser(GetAuthUser value),
+  }) {
+    assert(authCheckRequested != null);
+    assert(signedOut != null);
+    assert(getAuthUser != null);
+    return getAuthUser(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeMap<Result extends Object>({
+    Result authCheckRequested(AuthCheckRequested value),
+    Result signedOut(SignedOut value),
+    Result getAuthUser(GetAuthUser value),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (getAuthUser != null) {
+      return getAuthUser(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class GetAuthUser implements AuthEvent {
+  const factory GetAuthUser() = _$GetAuthUser;
 }
 
 class _$AuthStateTearOff {
@@ -249,6 +362,12 @@ class _$AuthStateTearOff {
   Unauthenticated unauthenticated() {
     return const Unauthenticated();
   }
+
+  AuthUser authUser(@required dynamic authUser) {
+    return AuthUser(
+      authUser,
+    );
+  }
 }
 
 // ignore: unused_element
@@ -260,12 +379,14 @@ mixin _$AuthState {
     @required Result initial(),
     @required Result authenticated(),
     @required Result unauthenticated(),
+    @required Result authUser(@required dynamic authUser),
   });
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
     Result initial(),
     Result authenticated(),
     Result unauthenticated(),
+    Result authUser(@required dynamic authUser),
     @required Result orElse(),
   });
   @optionalTypeArgs
@@ -273,12 +394,14 @@ mixin _$AuthState {
     @required Result initial(Initial value),
     @required Result authenticated(Authenticated value),
     @required Result unauthenticated(Unauthenticated value),
+    @required Result authUser(AuthUser value),
   });
   @optionalTypeArgs
   Result maybeMap<Result extends Object>({
     Result initial(Initial value),
     Result authenticated(Authenticated value),
     Result unauthenticated(Unauthenticated value),
+    Result authUser(AuthUser value),
     @required Result orElse(),
   });
 }
@@ -332,10 +455,12 @@ class _$Initial implements Initial {
     @required Result initial(),
     @required Result authenticated(),
     @required Result unauthenticated(),
+    @required Result authUser(@required dynamic authUser),
   }) {
     assert(initial != null);
     assert(authenticated != null);
     assert(unauthenticated != null);
+    assert(authUser != null);
     return initial();
   }
 
@@ -345,6 +470,7 @@ class _$Initial implements Initial {
     Result initial(),
     Result authenticated(),
     Result unauthenticated(),
+    Result authUser(@required dynamic authUser),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -360,10 +486,12 @@ class _$Initial implements Initial {
     @required Result initial(Initial value),
     @required Result authenticated(Authenticated value),
     @required Result unauthenticated(Unauthenticated value),
+    @required Result authUser(AuthUser value),
   }) {
     assert(initial != null);
     assert(authenticated != null);
     assert(unauthenticated != null);
+    assert(authUser != null);
     return initial(this);
   }
 
@@ -373,6 +501,7 @@ class _$Initial implements Initial {
     Result initial(Initial value),
     Result authenticated(Authenticated value),
     Result unauthenticated(Unauthenticated value),
+    Result authUser(AuthUser value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -425,10 +554,12 @@ class _$Authenticated implements Authenticated {
     @required Result initial(),
     @required Result authenticated(),
     @required Result unauthenticated(),
+    @required Result authUser(@required dynamic authUser),
   }) {
     assert(initial != null);
     assert(authenticated != null);
     assert(unauthenticated != null);
+    assert(authUser != null);
     return authenticated();
   }
 
@@ -438,6 +569,7 @@ class _$Authenticated implements Authenticated {
     Result initial(),
     Result authenticated(),
     Result unauthenticated(),
+    Result authUser(@required dynamic authUser),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -453,10 +585,12 @@ class _$Authenticated implements Authenticated {
     @required Result initial(Initial value),
     @required Result authenticated(Authenticated value),
     @required Result unauthenticated(Unauthenticated value),
+    @required Result authUser(AuthUser value),
   }) {
     assert(initial != null);
     assert(authenticated != null);
     assert(unauthenticated != null);
+    assert(authUser != null);
     return authenticated(this);
   }
 
@@ -466,6 +600,7 @@ class _$Authenticated implements Authenticated {
     Result initial(Initial value),
     Result authenticated(Authenticated value),
     Result unauthenticated(Unauthenticated value),
+    Result authUser(AuthUser value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -518,10 +653,12 @@ class _$Unauthenticated implements Unauthenticated {
     @required Result initial(),
     @required Result authenticated(),
     @required Result unauthenticated(),
+    @required Result authUser(@required dynamic authUser),
   }) {
     assert(initial != null);
     assert(authenticated != null);
     assert(unauthenticated != null);
+    assert(authUser != null);
     return unauthenticated();
   }
 
@@ -531,6 +668,7 @@ class _$Unauthenticated implements Unauthenticated {
     Result initial(),
     Result authenticated(),
     Result unauthenticated(),
+    Result authUser(@required dynamic authUser),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -546,10 +684,12 @@ class _$Unauthenticated implements Unauthenticated {
     @required Result initial(Initial value),
     @required Result authenticated(Authenticated value),
     @required Result unauthenticated(Unauthenticated value),
+    @required Result authUser(AuthUser value),
   }) {
     assert(initial != null);
     assert(authenticated != null);
     assert(unauthenticated != null);
+    assert(authUser != null);
     return unauthenticated(this);
   }
 
@@ -559,6 +699,7 @@ class _$Unauthenticated implements Unauthenticated {
     Result initial(Initial value),
     Result authenticated(Authenticated value),
     Result unauthenticated(Unauthenticated value),
+    Result authUser(AuthUser value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -571,4 +712,126 @@ class _$Unauthenticated implements Unauthenticated {
 
 abstract class Unauthenticated implements AuthState {
   const factory Unauthenticated() = _$Unauthenticated;
+}
+
+abstract class $AuthUserCopyWith<$Res> {
+  factory $AuthUserCopyWith(AuthUser value, $Res Function(AuthUser) then) =
+      _$AuthUserCopyWithImpl<$Res>;
+  $Res call({dynamic authUser});
+}
+
+class _$AuthUserCopyWithImpl<$Res> extends _$AuthStateCopyWithImpl<$Res>
+    implements $AuthUserCopyWith<$Res> {
+  _$AuthUserCopyWithImpl(AuthUser _value, $Res Function(AuthUser) _then)
+      : super(_value, (v) => _then(v as AuthUser));
+
+  @override
+  AuthUser get _value => super._value as AuthUser;
+
+  @override
+  $Res call({
+    Object authUser = freezed,
+  }) {
+    return _then(AuthUser(
+      authUser == freezed ? _value.authUser : authUser as dynamic,
+    ));
+  }
+}
+
+class _$AuthUser implements AuthUser {
+  const _$AuthUser(@required this.authUser) : assert(authUser != null);
+
+  @override
+  final dynamic authUser;
+
+  @override
+  String toString() {
+    return 'AuthState.authUser(authUser: $authUser)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other is AuthUser &&
+            (identical(other.authUser, authUser) ||
+                const DeepCollectionEquality()
+                    .equals(other.authUser, authUser)));
+  }
+
+  @override
+  int get hashCode =>
+      runtimeType.hashCode ^ const DeepCollectionEquality().hash(authUser);
+
+  @override
+  $AuthUserCopyWith<AuthUser> get copyWith =>
+      _$AuthUserCopyWithImpl<AuthUser>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  Result when<Result extends Object>({
+    @required Result initial(),
+    @required Result authenticated(),
+    @required Result unauthenticated(),
+    @required Result authUser(@required dynamic authUser),
+  }) {
+    assert(initial != null);
+    assert(authenticated != null);
+    assert(unauthenticated != null);
+    assert(authUser != null);
+    return authUser(this.authUser);
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeWhen<Result extends Object>({
+    Result initial(),
+    Result authenticated(),
+    Result unauthenticated(),
+    Result authUser(@required dynamic authUser),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (authUser != null) {
+      return authUser(this.authUser);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  Result map<Result extends Object>({
+    @required Result initial(Initial value),
+    @required Result authenticated(Authenticated value),
+    @required Result unauthenticated(Unauthenticated value),
+    @required Result authUser(AuthUser value),
+  }) {
+    assert(initial != null);
+    assert(authenticated != null);
+    assert(unauthenticated != null);
+    assert(authUser != null);
+    return authUser(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeMap<Result extends Object>({
+    Result initial(Initial value),
+    Result authenticated(Authenticated value),
+    Result unauthenticated(Unauthenticated value),
+    Result authUser(AuthUser value),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (authUser != null) {
+      return authUser(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class AuthUser implements AuthState {
+  const factory AuthUser(@required dynamic authUser) = _$AuthUser;
+
+  dynamic get authUser;
+  $AuthUserCopyWith<AuthUser> get copyWith;
 }

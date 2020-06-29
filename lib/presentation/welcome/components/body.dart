@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:authappui/Screens/Login/login_screen.dart';
-import 'package:authappui/Screens/Signup/signup_screen.dart';
-import 'package:authappui/Screens/Welcome/components/background.dart';
-import 'package:authappui/components/rounded_button.dart';
-import 'package:authappui/constants.dart';
+import 'package:givethem/presentation/sign_in/sign_in_page.dart';
+import 'package:givethem/presentation/sign_up/sign_up_page.dart';
+import 'package:givethem/presentation/welcome/components/background.dart';
+import 'package:givethem/presentation/core/rounded_button.dart';
+import 'package:givethem/constants.dart';
 import 'package:flutter_svg/svg.dart';
 
 class Body extends StatelessWidget {
@@ -16,16 +16,13 @@ class Body extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            Text(
-              "WELCOME TO EDU",
-              style: TextStyle(fontWeight: FontWeight.bold),
-            ),
             SizedBox(height: size.height * 0.05),
-            SvgPicture.asset(
-              "assets/icons/chat.svg",
+            Image.asset(
+              "assets/icons/logo.png",
               height: size.height * 0.45,
             ),
             SizedBox(height: size.height * 0.05),
+//            SizedBox(height: size.height * 0.05),
             RoundedButton(
               text: "LOGIN",
               press: () {
@@ -33,7 +30,7 @@ class Body extends StatelessWidget {
                   context,
                   MaterialPageRoute(
                     builder: (context) {
-                      return LoginScreen();
+                      return SignInPage();
                     },
                   ),
                 );
@@ -48,7 +45,7 @@ class Body extends StatelessWidget {
                   context,
                   MaterialPageRoute(
                     builder: (context) {
-                      return SignUpScreen();
+                      return SignUpPage();
                     },
                   ),
                 );

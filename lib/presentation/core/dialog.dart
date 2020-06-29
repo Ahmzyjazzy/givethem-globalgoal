@@ -19,7 +19,7 @@ class Dialogs {
                   children: [
                     CircularProgressIndicator(),
                     SizedBox(
-                      width: 10,
+                      width: 15,
                     ),
                     Text(
                       "Please Wait....",
